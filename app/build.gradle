@@ -41,6 +41,13 @@ android {
         }
     }
 
+    packaging {
+        resources {
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/LICENSE-notice.md" // Optional: some jars use this
+        }
+    }
+
     buildFeatures {
         viewBinding true
         dataBinding true
@@ -79,4 +86,16 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+
+    //Koin
+    implementation("io.insert-koin:koin-androidx-compose:4.1.0")
+    implementation("io.insert-koin:koin-test-junit4:4.1.0")
+
+    //unit test
+    implementation("io.mockk:mockk:1.14.5")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
 }
