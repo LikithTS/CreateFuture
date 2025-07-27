@@ -9,26 +9,54 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import com.createfuture.takehome.domain.util.Result
 
-class GetCharactersViewModel (
+class GetCharactersViewModel(
     private val getCharactersUseCases: GetCharactersUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow<CFUiState>(CFUiState.Ideal)
     val uiState = _uiState.asStateFlow()
+
+    private val _currentSearchQuery = MutableStateFlow<String>("")
+    val currentSearchQuery = _currentSearchQuery.asStateFlow()
 
     fun getCharactersData() {
         _uiState.value = CFUiState.Loading
         viewModelScope.launch {
             val dataResponse = getCharactersUseCases()
-            when(dataResponse) {
+            when (dataResponse) {
                 is Result.Success -> {
-                    //We are already handling empty response in use case. If response is empty or null we're sending failure daya
-                    _uiState.value = CFUiState.Success(dataResponse.data ?: emptyList())
+                    //We are already handling empty response in use case. So no need to worry here.
+                    // Since our Success have nullable. We need to pass empty string here again
+                    _uiState.value = CFUiState.Success(
+                        dataResponse.data ?: emptyList(),
+                        completeApiCharacters = dataResponse.data ?: emptyList()
+                    )
+                    if (_currentSearchQuery.value.isNotEmpty()) {
+                        filterListBySearchData(currentSearchQuery.value)
+                    }
                 }
+
                 is Result.Failure -> {
                     _uiState.value = CFUiState.Error(dataResponse.error)
                 }
             }
+        }
+    }
+
+    fun filterListBySearchData(searchString: String) {
+        _currentSearchQuery.value = searchString
+
+        val state = _uiState.value
+        if (state is CFUiState.Success) {
+            val completeData = state.completeApiCharacters
+            val filteredFinalData = if (_currentSearchQuery.value.isNotEmpty()) {
+                completeData.filter {
+                    it.name.contains(searchString, ignoreCase = true)
+                }
+            } else {
+                completeData
+            }
+            _uiState.value = CFUiState.Success(filteredFinalData, completeData)
         }
     }
 }
