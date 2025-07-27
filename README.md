@@ -37,3 +37,17 @@ We would like you to fix the app's user facing issues (both documented and undoc
 Please use version control. Import the supplied code as is to git and commit your changes through that. This will allow us to review the changes you have made.
 
 We expect you should spend no more than 3 hours on this work. We appreciate you taking the time to work on this and understand that sometimes it's not possible to spend as much time as you would like. If there are any aspects of the codebase you would have liked to work on with more time, please detail these in the ReadME file to give us some insight in to your process.
+
+
+## Findings
+
+1. Initial app did not follow clean architecture or proper MVVM format. 
+2. UI used was combination of fragment and some compose code which is not great. 
+3. Even tho project looks simple. Having everything in one class is not good approach. 
+
+## Improvements carried out
+
+1. Deleted old classes and improved with jetpack compose
+2. Followed clean architecture
+3. Created use case for proper usage for future. For example if any api returns more data which is not required in mobile app screens. We can business logic in use case. 
+4. In current example use case is not doing much, but it can used to enhance it for future purpose. 
