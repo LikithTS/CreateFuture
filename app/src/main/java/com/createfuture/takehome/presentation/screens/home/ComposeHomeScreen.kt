@@ -27,7 +27,8 @@ fun ComposeHomeScreen(
 
     when(val dataResp = cfState) {
         is CFUiState.Ideal -> {
-
+            //Do nothing
+            //Since it is default value.
         }
         is CFUiState.Loading -> {
             //Show Progress
@@ -37,7 +38,10 @@ fun ComposeHomeScreen(
             }
         }
         is CFUiState.Success -> {
-            CharacterDataView(dataResp.apiCharacters)
+            //Show main content view
+            CharacterDataView(modifier, dataResp.apiCharacters, onQueryChanged = {
+                getCharactersViewModel.filterListBySearchData(it)
+            })
         }
         is CFUiState.Error -> {
             //Handle error
