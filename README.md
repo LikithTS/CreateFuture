@@ -61,6 +61,11 @@ We expect you should spend no more than 3 hours on this work. We appreciate you 
 3. Need to handle different screen size. Need to support tablet and phone. Need a design to implement that. 
 4. We can add some more unit test case for api failure. 
 5. We can add some more sample for test case and update unit test with different cases. 
+6. Move all dependency to lib.versions.toml. So it will be easy to handle version when we start with modular design.
+7. We can create new modules when app start growing more with new features. 
+8. All modules will be like a plug and play module with no concrete dependency to platforms. 
+9. If we above step is followed then easily we can move our project to kotlin multi platform (KMP) in coming days. 
+10. Since google is officially supporting KMP atm. We can see it will grow more faster in coming days.
 
 ## Important note
 
