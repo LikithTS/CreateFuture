@@ -61,3 +61,14 @@ We expect you should spend no more than 3 hours on this work. We appreciate you 
 3. Need to handle different screen size. Need to support tablet and phone. Need a design to implement that. 
 4. We can add some more unit test case for api failure. 
 5. We can add some more sample for test case and update unit test with different cases. 
+
+## Important note
+
+1. I won't suggest having a UI test cases. We can cover UI test case using automation. 
+2. When we use automation for UI test cases. Then we don't have to connect real device for running. 
+3. We can use appium and browser stack to run app on each push and make sure we're passing all the E2E automation testing. 
+4. If any one test case fails we can block the PR merge. 
+5. We can also add Unit test case coverage check.
+6. Lint checks.
+7. Check on sync issues. Whenever new PR is raised. 
+8. If all the above steps is green only then PR will be allowed to be merged. 
