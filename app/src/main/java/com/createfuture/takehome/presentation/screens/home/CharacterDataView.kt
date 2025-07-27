@@ -38,9 +38,10 @@ import com.createfuture.takehome.domain.util.SessionConstant
 fun CharacterDataView(
     modifier: Modifier,
     apiCharacters: List<CharacterResponseItem>,
+    queryData: String,
     onQueryChanged: (String) -> Unit) {
 
-    var query by remember { mutableStateOf("") }
+    var query by remember { mutableStateOf(queryData) }
 
     Box(modifier = modifier.fillMaxSize()) {
         Image(

@@ -20,6 +20,7 @@ fun ComposeHomeScreen(
 ) {
 
     val cfState by getCharactersViewModel.uiState.collectAsState()
+    val queryData by getCharactersViewModel.currentSearchQuery.collectAsState()
 
     LaunchedEffect(Unit) {
         getCharactersViewModel.getCharactersData()
@@ -39,7 +40,7 @@ fun ComposeHomeScreen(
         }
         is CFUiState.Success -> {
             //Show main content view
-            CharacterDataView(modifier, dataResp.apiCharacters, onQueryChanged = {
+            CharacterDataView(modifier, dataResp.apiCharacters, queryData,  onQueryChanged = {
                 getCharactersViewModel.filterListBySearchData(it)
             })
         }

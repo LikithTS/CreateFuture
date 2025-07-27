@@ -16,7 +16,8 @@ class GetCharactersViewModel(
     private val _uiState = MutableStateFlow<CFUiState>(CFUiState.Ideal)
     val uiState = _uiState.asStateFlow()
 
-    private var currentSearchQuery: String = ""
+    private val _currentSearchQuery = MutableStateFlow<String>("")
+    val currentSearchQuery = _currentSearchQuery.asStateFlow()
 
     fun getCharactersData() {
         _uiState.value = CFUiState.Loading
@@ -30,8 +31,8 @@ class GetCharactersViewModel(
                         dataResponse.data ?: emptyList(),
                         completeApiCharacters = dataResponse.data ?: emptyList()
                     )
-                    if (currentSearchQuery.isNotEmpty()) {
-                        filterListBySearchData(currentSearchQuery)
+                    if (_currentSearchQuery.value.isNotEmpty()) {
+                        filterListBySearchData(currentSearchQuery.value)
                     }
                 }
 
@@ -43,12 +44,12 @@ class GetCharactersViewModel(
     }
 
     fun filterListBySearchData(searchString: String) {
-        currentSearchQuery = searchString
+        _currentSearchQuery.value = searchString
 
         val state = _uiState.value
         if (state is CFUiState.Success) {
             val completeData = state.completeApiCharacters
-            val filteredFinalData = if (currentSearchQuery.isNotEmpty()) {
+            val filteredFinalData = if (_currentSearchQuery.value.isNotEmpty()) {
                 completeData.filter {
                     it.name.contains(searchString, ignoreCase = true)
                 }
@@ -57,7 +58,5 @@ class GetCharactersViewModel(
             }
             _uiState.value = CFUiState.Success(filteredFinalData, completeData)
         }
-
-
     }
 }

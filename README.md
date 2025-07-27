@@ -51,3 +51,13 @@ We expect you should spend no more than 3 hours on this work. We appreciate you 
 2. Followed clean architecture
 3. Created use case for proper usage for future. For example if any api returns more data which is not required in mobile app screens. We can business logic in use case. 
 4. In current example use case is not doing much, but it can used to enhance it for future purpose. 
+5. Added search view in screen.
+6. Added few unit test cases. 
+
+## Future improvements
+
+1. Seasons shows does not give proper info. Need to re-think on the design and layout. So it'll be good to have some info on it. 
+2. Improve app to use dark and light theme. 
+3. Need to handle different screen size. Need to support tablet and phone. Need a design to implement that. 
+4. We can add some more unit test case for api failure. 
+5. We can add some more sample for test case and update unit test with different cases. 
