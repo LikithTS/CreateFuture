@@ -12,15 +12,18 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * Define all your class or interface when needs to injected in any other class.
+ * I am using Koin here. It is purely kotlin. So it is not platform based.
+ * We can re-use the below method in any KMP project.
+ */
 val createFutureModule = module {
 
     single {
-        // Create a logging interceptor and for now getting only body logs
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
 
-        // Create OkHttpClient with logging
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()

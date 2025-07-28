@@ -1,5 +1,6 @@
 package com.createfuture.takehome.domain.usecase
 
+import com.createfuture.takehome.data.repository.FakeCfRepositoryCase2ForSuccessCase
 import com.createfuture.takehome.data.repository.FakeCfRepositoryForFailureCase
 import com.createfuture.takehome.data.repository.FakeCfRepositoryForSuccessCase
 import com.createfuture.takehome.domain.repository.CFRepository
@@ -21,6 +22,21 @@ class GetCharactersUseCasesTest {
         when(val responseData = useCase()) {
             is Result.Success -> {
                 Assert.assertEquals("Eddard Stark", responseData.data?.first()?.name)
+            }
+            is Result.Failure -> {
+                Assert.fail("Expected success but got error: ${responseData.error}")
+            }
+        }
+    }
+
+    @Test
+    fun `returns empty list if server not able procees the request in a given time`() = runTest {
+
+        cFRepository = FakeCfRepositoryCase2ForSuccessCase()
+        useCase = GetCharactersUseCases(cFRepository)
+        when(val responseData = useCase()) {
+            is Result.Success -> {
+                Assert.assertEquals(0, responseData.data?.size)
             }
             is Result.Failure -> {
                 Assert.fail("Expected success but got error: ${responseData.error}")

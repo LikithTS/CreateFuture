@@ -8,6 +8,9 @@ import com.createfuture.takehome.domain.util.Result
 import kotlinx.coroutines.ensureActive
 import kotlin.coroutines.coroutineContext
 
+/**
+ * Get the implementation of CFRepository
+ */
 class CFRepositoryImpl(
     private val cfApiInterface: CFApiInterface
 ) : CFRepository {
