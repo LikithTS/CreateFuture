@@ -77,3 +77,29 @@ We expect you should spend no more than 3 hours on this work. We appreciate you 
 6. Lint checks.
 7. Check on sync issues. Whenever new PR is raised. 
 8. If all the above steps is green only then PR will be allowed to be merged. 
+
+## Clone the repository
+
+Using **Android Studio:**
+
+- Go to **File → New → Project from Version Control → Git**.
+- Enter the repository URL:
+
+## Support
+Reach out likith.ts@gmail.com in case of any help.
+
+## Contributing
+State if you are open to contributions and what your requirements are for accepting them.
+
+For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+
+You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+
+
+## Branching strategies
+
+The main branch will act as a protected branch and the single source of truth. Nothing should be pushed directly to the main branch.
+New changes need to be branched out from the main branch, and a pull request should be raised with details of the changes.
+
+## Project status
+Development complete. Review pending. 
