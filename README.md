@@ -98,8 +98,8 @@ You can also document commands to lint the code or run tests. These steps help t
 
 ## Branching strategies
 
-The main branch will act as a protected branch and the single source of truth. Nothing should be pushed directly to the main branch.
-New changes need to be branched out from the main branch, and a pull request should be raised with details of the changes.
+The master branch will act as a protected branch and the single source of truth. Nothing should be pushed directly to the master branch.
+New changes need to be branched out from the master branch, and a pull request should be raised with details of the changes.
 
 ## Project status
 Development complete. Review pending. 
