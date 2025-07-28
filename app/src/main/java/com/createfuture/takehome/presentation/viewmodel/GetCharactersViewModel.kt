@@ -43,6 +43,9 @@ class GetCharactersViewModel(
         }
     }
 
+    /**
+     * Following method is used to filter list on ehe complete least. This will be copied to UI State and reference it from any where in presentation layer
+     */
     fun filterListBySearchData(searchString: String) {
         _currentSearchQuery.value = searchString
 
